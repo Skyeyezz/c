@@ -7,7 +7,6 @@ int main(void)
     double a,r,h,pie;
     pie = 3.1415926535897;
 
-
     printf("Enter radius: ");
     scanf("%lf", &r);
     printf("Enter height: ");
