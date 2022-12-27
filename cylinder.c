@@ -1,6 +1,6 @@
 #include <stdio.h>
 //Solves the area of a cylinder with some shitty artwork...
-// A = 2 π r h + 2 π r∧2;
+// a = 2 π r h + 2 π r∧2;
 
 int main(void)
 {
