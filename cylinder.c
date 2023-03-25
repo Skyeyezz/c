@@ -1,70 +1,62 @@
 #include <stdio.h>
-//Solves the area/volume of a cylinder with some shitty artwork...
-// Area: a = 2 π r h + 2 π r∧2;
-// Volume v = π r∧2 h
+
+#define pi 3.141592653589793
+
+double volume(double radius, double height)
+{
+    double volume = pi * (radius * radius) * height;
+    return volume;
+}
+
+double area(double radius, double height)
+{
+    double area = (2 * pi * radius * height) + (2 * pi * radius * radius);
+    return area;
+}
 
 int main(void)
 {
-    double a,r,h,pie,v;
-    int k;
-    pie = 3.1415926535897;
 
-    printf("Solve area or volume? ");
-    printf("1 for area 2 for volume:");
-    scanf("%d", &k);
+    printf("Solving for Cylinder:\n");
+    top:
+    printf("1: volume\n");
+    printf("2: area\n");
+    printf("3: exit\n");
 
-    if (k == 1) {
-        printf("Enter radius: ");
-        scanf("%lf", &r);
-        printf("Enter height: ");
-        scanf("%lf", &h);
+    int choice;
 
-        a = (2 * pie * r * h) + (2 * pie * r * r);
-        printf("\n");
-        printf("A = 2 π r h + 2 π r∧2\n");
-        printf("\n");
+    scanf("%d", &choice);
 
-        printf(".---------.   ∧     Radius is %gm\n", r);
-        printf("|~-------~|   |  \n");
-        printf("|         |   |  \n");
-        printf("|         |   |     Height is %gm\n", h);
-        printf("|         |   |  \n");
-        printf("|         |   |  \n");
-        printf("|         |   |   %g = 2π x %g x %g + 2π x %g² \n", a, r, h, r);
-        printf("|         |   |  \n");
-        printf("-_________-   V  \n");
-        printf("\n");
+    double radius, height;
 
-        printf("The area of the cylinder is: %gm²\n", a);
-    }
-    else if (k == 2)
+    if (choice == 1)
     {
-        printf("Enter radius: ");
-        scanf("%lf", &r);
-        printf("Enter height: ");
-        scanf("%lf", &h);
+        printf("Solving for volume\n");
+        printf("Enter radius and height:");
+        scanf("%lf,%lf", &radius, &height);
 
-        v = pie * r * r * h;
-
-        printf("\n");
-        printf("V = π r² h\n");
-        printf("\n");
-
-        printf(".---------.   ∧     Radius is %gm\n", r);
-        printf("|~-------~|   |  \n");
-        printf("|         |   |  \n");
-        printf("|         |   |     Height is %gm\n", h);
-        printf("|         |   |  \n");
-        printf("|         |   |  \n");
-        printf("|         |   |   %g = π x %g² x %g \n",v,r,h);
-        printf("|         |   |  \n");
-        printf("-_________-   V  \n");
-        printf("\n");
-
-        printf("The volume of the cylinder is %g cubic meters",v);
+        double vol = volume(radius, height);
+        printf("Volume = %lf\n", vol);
 
     }
-    else printf("Please enter 1 or 2 not %d", k);
+    else if (choice == 2)
+    {
+        printf("Solving for area\n");
+        printf("Enter radius and height:");
+        scanf("%lf,%lf", &radius, &height);
 
-    return 0;
+        double A = area(radius, height);
+        printf("Area = %lf\n", A);
+    }
+    else if (choice == 3)
+    {
+        return 0;
+    }
+    else{
+        printf("Please enter a valid number\n");
+        goto top;
+    }
+
+    goto top;
+
 }
