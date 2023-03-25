@@ -5,7 +5,7 @@
 
 double volume(double radius, double height)
 {
-    double volume = pi * (radius * radius) * height;
+    double volume = pi * radius * radius * height;
     return volume;
 }
 
